@@ -40,15 +40,20 @@ export default {
     }
   },
   mounted () {
-    Vue.config.blogRef.once('value').then((snapshot) => {
-      const blog = snapshot.val()
-      const keys = Object.keys(blog.posts)
-      const postsResult = []
-      keys.forEach((key) => {
-        postsResult.push(blog.posts[key])
+    Vue.FIREBASE.db.goOnline()
+    Vue.FIREBASE.getLastPosts('blog', 3)
+      .then((snapshot) => {
+        const blog = snapshot.val()
+        const keys = Object.keys(blog)
+        console.log(blog)
+        const postsResult = []
+        keys.forEach((key) => {
+          postsResult.push(blog[key])
+        })
+        postsResult.reverse()
+        this.posts = postsResult.slice(0)
+        Vue.FIREBASE.db.goOffline()
       })
-      this.posts = postsResult.slice(0)
-    })
   }
 }
 </script>
