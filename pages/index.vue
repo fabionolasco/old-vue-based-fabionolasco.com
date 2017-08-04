@@ -34,7 +34,12 @@
 import Vue from 'vue'
 
 export default {
-  asyncData ({ params }, callback) {
+  data () {
+    return {
+      posts: []
+    }
+  },
+  mounted () {
     Vue.config.blogRef.once('value').then((snapshot) => {
       const blog = snapshot.val()
       const keys = Object.keys(blog.posts)
@@ -42,13 +47,8 @@ export default {
       keys.forEach((key) => {
         postsResult.push(blog.posts[key])
       })
-      callback(null, {posts: postsResult.slice(0)})
+      this.posts = postsResult.slice(0)
     })
-  },
-  data () {
-    return {
-      posts: []
-    }
   }
 }
 </script>

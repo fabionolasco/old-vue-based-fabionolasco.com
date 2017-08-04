@@ -3,7 +3,7 @@
     <fn-header></fn-header>
     <fn-navbar></fn-navbar>
 
-    <nuxt />
+    <nuxt></nuxt>
     
     <fn-footer></fn-footer>
   </div>

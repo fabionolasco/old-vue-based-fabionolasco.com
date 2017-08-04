@@ -65,3 +65,9 @@ systemctl start nginx
 # this only works if domain is set (not just ip)
 
 
+# 0 0 */3 * * /crons/renewcert.sh
+
+##!/bin/sh
+#certbot renew
+
+# firewall-cmd --zone=public --add-port=3000/tcp
