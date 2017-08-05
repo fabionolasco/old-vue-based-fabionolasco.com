@@ -13,16 +13,16 @@
       </div>
       <section class="grid-x fn-post-summary-section" v-for="post in posts" v-bind:key="post.slug">
         <div class="cell small-12 fn-jumbotron">
-          <router-link :to="'/blog/' + post.slug">
+          <router-link :to="'/projects/' + post.slug">
              <fn-image :src="'post@0x.png'" alt="Post Alt" class="fn-post-summary-img"></fn-image> 
           </router-link>
           <div class="fn-post-summary">
-            <router-link :to="'/blog/' + post.slug"><h5>{{post.title}}</h5></router-link>
+            <router-link :to="'/projects/' + post.slug"><h5>{{post.title}}</h5></router-link>
             <span class="fn-post-summary-date">{{post.date}}</span>
             <p>
-              {{post.description}}
+              {{post.smallDescription}}
               <br>
-              <router-link :to="'/blog/' + post.slug">Visit Website</router-link>
+              <router-link :to="'/projects/' + post.slug">Visit Website</router-link>
             </p>
           </div>
         </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import DB from '../plugins/db'
+import DB from '../../plugins/db'
 
 export default {
   data () {
@@ -59,6 +59,9 @@ export default {
         const keys = Object.keys(results)
         const postsResult = []
         keys.forEach((key) => {
+          const p = document.createElement('p')
+          p.innerHTML = results[key].description
+          results[key].smallDescription = p.textContent.substring(0, 380) + '...'
           postsResult.push(results[key])
         })
         this.loading = false

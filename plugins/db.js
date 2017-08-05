@@ -4,10 +4,30 @@ const DB = {
   getRef,
   checkDbVersion,
   getLastPosts,
-  getPost
+  getPost,
+  getLongDate
 }
 
 export default DB
+
+// GET LONG DATE
+function getLongDate (source) {
+  const baseDate = new Date(source.pubDate)
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  let dd = baseDate.getDate();
+  const mm = months[baseDate.getMonth()];
+  const yyyy = baseDate.getFullYear();
+  if (dd > 3 && dd < 21) { dd += 'th' }
+  else {
+    switch (dd % 10) {
+      case 1: dd += 'st';
+      case 2: dd += 'nd';
+      case 3: dd += 'rd';
+      default: dd += 'th';
+    }
+  }
+  return mm + ' ' + dd + ', ' + yyyy
+}
 
 // GET SPECIFIC POST
 function getPost (from, id) {

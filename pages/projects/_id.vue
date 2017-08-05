@@ -67,13 +67,13 @@ export default {
   },
   mounted() {
     // Get from DB if necessary
-    DB.getPost('blog', this.$route.params.id)
+    DB.getPost('projects', this.$route.params.id)
       .then((results) => {
         results.longPubDate = DB.getLongDate(results)
         results.smallDescription = results.description.substring(0, 70) + '...'
         this.post = Object.assign({}, results)
-        this.loading = false
         document.title += ' - ' + this.post.title
+        this.loading = false
       })
   }
 }
