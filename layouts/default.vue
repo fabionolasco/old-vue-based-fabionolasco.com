@@ -16,9 +16,11 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Image from '@/components/Image'
 import Jumbotron from '@/components/Jumbotron'
+import Spinner from '@/components/Spinner'
 
+// Global / recursive components
 Vue.component('fn-image', Image)
-
+Vue.component('fn-spinner', Spinner)
 Vue.component('fn-jumbotron', Jumbotron)
 
 export default {

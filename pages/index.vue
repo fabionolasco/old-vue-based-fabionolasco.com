@@ -9,6 +9,9 @@
     </fn-jumbotron>
 
     <div class="fn-content">
+      <div v-if="loading">
+        <fn-spinner></fn-spinner>
+      </div>
       <section class="grid-x fn-post-summary-section" v-for="post in posts" v-bind:key="post.slug">
         <div class="cell small-12 fn-jumbotron">
           <router-link :to="'/blog/' + post.slug">
@@ -31,16 +34,17 @@
 </template>
 
 <script>
-import Vue from 'vue'
+import DB from '../plugins/db'
 
 export default {
   data () {
     return {
-      posts: []
+      posts: [],
+      loading: true
     }
   },
   mounted () {
-    Vue.FIREBASE.getLastPosts('blog', 3)
+    DB.getLastPosts('blog', 3)
       .then((results) => {
         const keys = Object.keys(results)
         const postsResult = []
@@ -48,6 +52,7 @@ export default {
           postsResult.push(results[key])
         })
         postsResult.reverse()
+        this.loading = false
         this.posts = postsResult.slice(0)
       })
   }

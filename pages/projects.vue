@@ -8,6 +8,9 @@
     </fn-jumbotron>
 
     <div class="fn-content">
+      <div v-if="loading">
+        <fn-spinner></fn-spinner>
+      </div>
       <section class="grid-x fn-post-summary-section" v-for="post in posts" v-bind:key="post.slug">
         <div class="cell small-12 fn-jumbotron">
           <router-link :to="'/blog/' + post.slug">
@@ -30,40 +33,26 @@
 </template>
 
 <script>
+import DB from '../plugins/db'
+
 export default {
-  name: 'projects',
   data () {
     return {
-      posts: [{
-        title: 'The most special blog post',
-        slug: 'special-post',
-        date: 'July 12th, 2017',
-        image: 'http://www.tapeciarnia.pl/tapety/normalne/226361_grafika_technologia.jpg',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id diam arcu. Nulla eleifend rutrum semper. Vestibulum blandit, lectus sed vulputate aliquam, leo mauris dignissim purus, volutpat sollicitudin ex ipsum eu nulla. Etiam eu justo augue. Vivamus quam odio, auctor vitae tincidunt id, iaculis maximus quam. Vivamus vitae mauris ut urna fermentum convallis. Suspendisse ut tellus ex. Ut quis purus justo. Pellentesque pharetra non eros sit amet dictum. Aliquam egestas dapibus velit, quis interdum enim faucibus sit amet.'
-      },
-      {
-        title: 'The most special blog post',
-        slug: 'special-post',
-        date: 'July 12th, 2017',
-        image: 'http://www.tapeciarnia.pl/tapety/normalne/226361_grafika_technologia.jpg',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id diam arcu. Nulla eleifend rutrum semper. Vestibulum blandit, lectus sed vulputate aliquam, leo mauris dignissim purus, volutpat sollicitudin ex ipsum eu nulla. Etiam eu justo augue. Vivamus quam odio, auctor vitae tincidunt id, iaculis maximus quam. Vivamus vitae mauris ut urna fermentum convallis. Suspendisse ut tellus ex. Ut quis purus justo. Pellentesque pharetra non eros sit amet dictum. Aliquam egestas dapibus velit, quis interdum enim faucibus sit amet.'
-      },
-      {
-        title: 'The most special blog post',
-        slug: 'special-post',
-        date: 'July 12th, 2017',
-        image: 'http://www.tapeciarnia.pl/tapety/normalne/226361_grafika_technologia.jpg',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id diam arcu. Nulla eleifend rutrum semper. Vestibulum blandit, lectus sed vulputate aliquam, leo mauris dignissim purus, volutpat sollicitudin ex ipsum eu nulla. Etiam eu justo augue. Vivamus quam odio, auctor vitae tincidunt id, iaculis maximus quam. Vivamus vitae mauris ut urna fermentum convallis. Suspendisse ut tellus ex. Ut quis purus justo. Pellentesque pharetra non eros sit amet dictum. Aliquam egestas dapibus velit, quis interdum enim faucibus sit amet.'
-      },
-      {
-        title: 'The most special blog post',
-        slug: 'special-post',
-        date: 'July 12th, 2017',
-        image: 'http://www.tapeciarnia.pl/tapety/normalne/226361_grafika_technologia.jpg',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id diam arcu. Nulla eleifend rutrum semper. Vestibulum blandit, lectus sed vulputate aliquam, leo mauris dignissim purus, volutpat sollicitudin ex ipsum eu nulla. Etiam eu justo augue. Vivamus quam odio, auctor vitae tincidunt id, iaculis maximus quam. Vivamus vitae mauris ut urna fermentum convallis. Suspendisse ut tellus ex. Ut quis purus justo. Pellentesque pharetra non eros sit amet dictum. Aliquam egestas dapibus velit, quis interdum enim faucibus sit amet.'
-      }
-      ]
+      posts: [],
+      loading: true
     }
+  },
+  mounted () {
+    DB.getLastPosts('projects', 99, 'orderByChild', 'importance')
+      .then((results) => {
+        const keys = Object.keys(results)
+        const postsResult = []
+        keys.forEach((key) => {
+          postsResult.push(results[key])
+        })
+        this.loading = false
+        this.posts = postsResult.slice(0)
+      })
   }
 }
 </script>
