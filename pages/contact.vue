@@ -84,12 +84,19 @@ export default {
 
 .fn-contat-line h6 {
   font-weight: bold;
+  margin: 0;
+}
+
+.fn-contat-line #fn-contact-,
+.fn-contat-line a {
+  line-height: 2.2rem;
+  display: inline-block;
 }
 
 .fn-contat-line i {
   font-size: 2rem;
   margin-right: 10px;
-  color: #ddd;
+  color: #aaa;
 }
 
 .fn-contat-line i,

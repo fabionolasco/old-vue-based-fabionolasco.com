@@ -2,7 +2,7 @@
   <div>
   
     <fn-jumbotron>
-      <h3 class="fn-text-shadow">
+      <h3 class="fn-text-shadow" v-if="post">
         {{post.title}}
       </h3>
     </fn-jumbotron>
@@ -10,7 +10,7 @@
     <div class="grid-x">
       <div class="cell small-12 fn-post-details">
         <div class="fn-center">
-          <div class="grid-x">
+          <div class="grid-x" v-if="post">
             <div class="cell small-8 fn-share">
               <span>Share on</span>
               <a :href="`https://twitter.com/share?text=${post.title}&url=https://fabionolasco.com/blog/${post.slug}`" title="Share this post on Twitter" target="_blank" rel="noopener noreferrer">
@@ -39,10 +39,10 @@
   
     <section class="grid-x">
       <div class="cell small-12 fn-content">
-        <div v-if="loading">
+        <div v-if="!post">
           <fn-spinner></fn-spinner>
         </div>
-        <div v-if="!loading">
+        <div v-if="post">
           <div class="cell small-12 fn-published">
             Published in {{ post.longPubDate }}
           </div>
@@ -57,22 +57,21 @@
 
 <script>
 import DB from '../../plugins/db'
+import UTILS from '../../plugins/utils.js'
 
 export default {
   data() {
     return {
-      post: {},
-      loading: true
+      post: false
     }
   },
   mounted() {
     // Get from DB if necessary
     DB.getPost('blog', this.$route.params.id)
       .then((results) => {
-        results.longPubDate = DB.getLongDate(results)
+        results.longPubDate = UTILS.getLongDate(results)
         results.smallDescription = results.description.substring(0, 70) + '...'
         this.post = Object.assign({}, results)
-        this.loading = false
         document.title += ' - ' + this.post.title
       })
   }
