@@ -43,6 +43,17 @@ export default {
     }
   },
   mounted () {
+    // Get from localStorage if present
+    let fromLocal
+    if (localStorage) {
+      fromLocal = localStorage.getItem('projects/posts')
+      if (fromLocal) {
+        const results = JSON.parse(fromLocal)
+        this.posts = results.slice(0)
+        this.loading = false
+      }
+    }
+    // Get from DB if necessary
     DB.getLastPosts('projects', 99, 'orderByChild', 'importance')
       .then((results) => {
         const keys = Object.keys(results)
@@ -51,7 +62,10 @@ export default {
           postsResult.push(results[key])
         })
         this.loading = false
-        this.posts = postsResult.slice(0)
+        // Only update array if it is different from localStorage
+        if (JSON.stringify(fromLocal) !== JSON.stringify(postsResult)) {
+          this.posts = postsResult.slice(0)
+        }
       })
   }
 }

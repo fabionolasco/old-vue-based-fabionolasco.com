@@ -41,3 +41,12 @@ html {
     border-top: 0;
   }
 }
+
+.first-letter::first-letter {
+  font-size: 4rem;
+  display: inline-block;
+  font-family: serif;
+  height: 1rem;
+  line-height: 3rem;
+  padding-top: 10px;
+}

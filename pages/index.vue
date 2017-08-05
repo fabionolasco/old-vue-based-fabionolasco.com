@@ -21,7 +21,7 @@
             <router-link :to="'/blog/' + post.slug"><h5>{{post.title}}</h5></router-link>
             <span class="fn-post-summary-date">{{post.date}}</span>
             <p>
-              {{post.description}}
+              {{post.smallDescription}}
               <br>
               <router-link :to="'/blog/' + post.slug">Read More...</router-link>
             </p>
@@ -44,16 +44,34 @@ export default {
     }
   },
   mounted () {
+    // Get from localStorage if present
+    let fromLocal
+    if (localStorage) {
+      fromLocal = localStorage.getItem('blog/posts')
+      if (fromLocal) {
+        const results = JSON.parse(fromLocal)
+        results.reverse()
+        this.posts = results.slice(0)
+        this.loading = false
+      }
+    }
+    // Get from DB if necessary
     DB.getLastPosts('blog', 3)
       .then((results) => {
         const keys = Object.keys(results)
         const postsResult = []
         keys.forEach((key) => {
+          const p = document.createElement('p')
+          p.innerHTML = results[key].description
+          results[key].smallDescription = p.textContent.substring(0, 380) + '...'
           postsResult.push(results[key])
         })
         postsResult.reverse()
         this.loading = false
-        this.posts = postsResult.slice(0)
+        // Only update array if it is different from localStorage
+        if (JSON.stringify(fromLocal) !== JSON.stringify(postsResult)) {
+          this.posts = postsResult.slice(0)
+        }
       })
   }
 }

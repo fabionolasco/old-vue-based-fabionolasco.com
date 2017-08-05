@@ -3,10 +3,32 @@ import Vue from 'vue'
 const DB = {
   getRef,
   checkDbVersion,
-  getLastPosts
+  getLastPosts,
+  getPost
 }
 
 export default DB
+
+// GET SPECIFIC POST
+function getPost (from, id) {
+  // First return promise
+  const promise = new Promise((resolve) => {
+    // Get data from Firebase
+    Vue.FIREBASE.db.goOnline()
+    const ref = DB.getRef(from)
+    // Get Content
+    ref.child('posts')
+      .orderByChild('slug')
+      .equalTo(id)
+      .once('value')
+      .then((snapshot) => {
+        const keys = Object.keys(snapshot.val())
+        resolve(snapshot.val()[keys[0]])
+        Vue.FIREBASE.db.goOffline()
+      })
+  })
+  return promise
+}
 
 // CREATE REFS
 function getRef (from) {
@@ -32,7 +54,8 @@ function checkDbVersion () {
           localVersion = version
         } else
         if (localVersion.toString() !== version.toString()) {
-          localStorage.clear()
+          localStorage.removeItem('blogposts')
+          localStorage.removeItem('projectsposts')
           localStorage.setItem(refName, version)
         }
         Vue.FIREBASE.db.goOffline()
@@ -56,14 +79,14 @@ function getLastPosts (from, count, orderBy = 'orderByKey', orderField) {
           resolve(JSON.parse(fromLocal))
         } else {
           // Otherwise go get data from Firebase
-          this.getPost()
+          getPost()
         }
       } else {
         // Otherwise go get data from Firebase
-        this.getPost()
+        getPost()
       }
       // Get data from Firebase
-      this.getPost = () => {
+      function getPost () {
         Vue.FIREBASE.db.goOnline()
         const args = []
         if (orderField) { args.push(orderField) }
