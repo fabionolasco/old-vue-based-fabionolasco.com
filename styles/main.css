@@ -32,13 +32,114 @@ html {
   border-top: 1px solid #ccc;
 }
 
+.fn-content {
+  padding: 30px 7%;
+  background-color: #dfdfdf;
+  line-height: 1.5;
+  letter-spacing: .05rem
+}
+
+.fn-published {
+  color: #aaa;
+  margin: -20px 0 20px;
+}
+
+.fn-center {
+  padding: 0 8%;
+}
+
+.fn-post-details {
+  height: 40px;
+  line-height: 40px;
+  background-color: #4bb8be;
+  color: #fff;
+}
+
+.fn-ratings {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  width: auto;
+  float: right;
+}
+
+.fn-ratings a {
+  display: table-cell;
+  font-size: 0;
+  width: 24px;
+  position: relative;
+  line-height: inherit;
+}
+
+.fn-ratings>a:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font: 20px/1 FontAwesome;
+  display: block;
+  content: "\f005";
+  cursor: pointer;
+  color: #ccc;
+  background: #bbb;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 10px 0;
+  width: 24px;
+}
+
+.fn-ratings>a:hover:before,
+.fn-ratings>a:hover~a:before,
+.fn-ratings>a.selected:before,
+.fn-ratings>a.selected~a:before {
+  color: #f0ad4e;
+  background: #f3b800;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fn-share a,
+.fn-share span {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0 4px 0 0;
+  vertical-align: middle;
+  height: 44px;
+}
+
+.fn-share a,
+.fn-share a.active,
+.fn-share a.visited {
+  color: #11818a;
+}
+
+.fn-share a:hover {
+  color: #fff;
+}
+
+.fn-share i {
+  display: inline-block;
+  font-size: 23px;
+  padding: 9px 4px;
+}
+
 @media screen and (min-width: 650px) {
+  .fn-center {
+    padding: 0 15%;
+  }
+  .fn-content {
+    padding: 50px 12%;
+  }
   .fn-post-summary-img img {
     width: 30%;
     padding: 0;
   }
   .fn-post-summary-section:not(:first-child) .fn-post-summary-img img {
     border-top: 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .fn-content {
+    padding: 50px 20%;
   }
 }
 
@@ -49,4 +150,21 @@ html {
   height: 1rem;
   line-height: 3rem;
   padding-top: 10px;
+}
+
+.fn-post-summary-img img,
+.fn-post-img img {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+  margin: 0 20px 0 0;
+}
+
+.fn-post-img img {
+  width: 400px;
+}
+
+.fn-post-summary-img img {
+  padding: 10px;
 }

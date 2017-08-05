@@ -14,7 +14,7 @@
       <section class="grid-x fn-post-summary-section" v-for="post in posts" v-bind:key="post.slug">
         <div class="cell small-12 fn-jumbotron">
           <router-link :to="'/projects/' + post.slug">
-             <fn-image :src="'post@0x.png'" alt="Post Alt" class="fn-post-summary-img"></fn-image> 
+             <fn-image :src="'post-small@0x.png'" alt="Post Alt" class="fn-post-summary-img"></fn-image> 
           </router-link>
           <div class="fn-post-summary">
             <router-link :to="'/projects/' + post.slug"><h5>{{post.title}}</h5></router-link>
@@ -100,14 +100,7 @@ export default {
   float: right;
 }
 
-.fn-content {
-  padding: 30px 8%;
-}
-
 @media screen and (min-width: 650px) {
-  .fn-content {
-    padding: 50px 15%;
-  }
   .fn-post-summary-section:not(:last-child) {
     margin-bottom: 60px;
   }

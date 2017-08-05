@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fn-contact">
   
     <fn-jumbotron>
       <h3 class="fn-text-shadow">
@@ -7,16 +7,20 @@
       </h3>
     </fn-jumbotron>
   
-    <div class="fn-content">
+    <section class="fn-content">
       <div class="grid-x">
-        <section class="cell small-6 fn-contat-line fn-contact-" v-on:click="showContent()">
+        <div class="cell small-12">
+          <!-- <h4>Thank you for contacting me!</h4>
+          <h5>I will answer as fast as I can!</h5> -->
+        </div>
+        <section class="cell small-16 large-6 fn-contat-line fn-contact-" v-on:click="showContent()">
           <i class="fa fa-envelope-open" aria-hidden="true"></i>
           <span>
             <h6>E-Mail</h6>
             <span id="fn-contact-">go{{secondPart}}</span>
           </span>
         </section>
-        <section class="cell small-6 fn-contat-line">
+        <section class="cell small-16 large-6 fn-contat-line">
           <i class="fa fa-linkedin-square" aria-hidden="true"></i>
           <span>
             <h6>LinkedIn</h6>
@@ -25,7 +29,7 @@
             </a>
           </span>
         </section>
-        <section class="cell small-6 fn-contat-line">
+        <section class="cell small-16 large-6 fn-contat-line">
           <i class="fa fa-twitter-square" aria-hidden="true"></i>
           <span>
             <h6>Twitter</h6>
@@ -34,7 +38,7 @@
             </a>
           </span>
         </section>
-        <section class="cell small-6 fn-contat-line">
+        <section class="cell small-16 large-6 fn-contat-line">
           <i class="fa fa-facebook-square" aria-hidden="true"></i>
           <span>
             <h6>Facebook</h6>
@@ -44,7 +48,7 @@
           </span>
         </section>
       </div>
-    </div>
+    </section>
   
   </div>
 </template>
@@ -74,10 +78,6 @@ export default {
 </script>
 
 <style scoped>
-.fn-content {
-  padding: 30px 8%;
-}
-
 .fn-contat-line {
   margin-bottom: 30px;
 }
@@ -99,13 +99,28 @@ export default {
   vertical-align: top;
 }
 
-.fn-contact- {
-  cursor: pointer;
+.fn-contact h4,
+.fn-contact h5 {
+  margin: 0;
+  color: #aaa;
 }
 
-@media screen and (min-width: 650px) {
-  .fn-content {
-    padding: 50px 15%;
-  }
+.fn-contact h4 {
+  font-size: 1.7rem;
+}
+
+.fn-contact h5 {
+  font-size: 1.2rem;
+  margin-bottom: 60px;
+}
+
+.fn-contat-line,
+.fn-contat-line span {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.fn-contact- {
+  cursor: pointer;
 }
 </style>
