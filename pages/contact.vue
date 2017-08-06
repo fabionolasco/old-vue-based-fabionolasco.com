@@ -69,9 +69,8 @@ export default {
       const ext = '@gm'
       if (this.secondPart !== 'midefabio' + ext + 'ail.com') {
         this.secondPart = 'midefabio' + ext + 'ail.com'
-      } else {
-        UTILS.selectText('fn-contact-')
       }
+      UTILS.selectText('fn-contact-')
     }
   }
 }
