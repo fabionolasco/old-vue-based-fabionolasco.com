@@ -4,12 +4,12 @@
     <fn-jumbotron>
       <h3 class="fn-text-shadow">
         <span class="fn-im">Hi, I'm Fabio!</span>
-        <span class="fn-desc">I'm passionate about all the connections between Front End Development and System Architectures, Productive Workflows, Portable Code, Progressive Web Apps, IoT and Artificial Inteligence.</span>
+        <span class="fn-desc">I'm passionate about all the connections between Front-end Development and System Architectures, Productive Workflows, Portable Code, Progressive Web Apps, IoT and Artificial Inteligence.</span>
       </h3>
     </fn-jumbotron>
 
     <div class="fn-content">
-      <div v-if="loading">
+      <div v-if="loading" class="fb-large-bottom">
         <fn-spinner></fn-spinner>
       </div>
       <section class="grid-x fn-post-summary-section" v-for="post in posts" v-bind:key="post.slug">

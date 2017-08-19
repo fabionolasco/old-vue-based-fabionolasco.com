@@ -8,7 +8,7 @@
     </fn-jumbotron>
 
     <div class="fn-content">
-      <div v-if="loading">
+      <div v-if="loading" class="fb-large-bottom">
         <fn-spinner></fn-spinner>
       </div>
       <section class="grid-x fn-post-summary-section" v-for="post in posts" v-bind:key="post.slug">

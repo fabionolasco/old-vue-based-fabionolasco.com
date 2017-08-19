@@ -8,7 +8,7 @@
     </fn-jumbotron>
 
     <div class="fn-content text-center">
-        <img src="/static/page404small.png" alt="Page Not Found"><br><br>
+        <img src="/static/page404small.png" alt="Page Not Found" /><br><br>
         Sorry, but the address that you are looking for does not exist!<br><br>
         The system just sent me an alert, and I will investigate it as soon as possible.<br><br>
         Meanwhile, please try using the top bar search.<br><br>

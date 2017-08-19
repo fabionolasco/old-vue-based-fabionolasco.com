@@ -5,16 +5,15 @@
 
         <nuxt-link to="/">
           <h1>Fabio Nolasco</h1>
-          <h2>Front End Architect</h2>
+          <h2>Front-end Architect</h2>
           <fn-image class="fn-photo" :src="'fabionolasco@0x.jpg'" alt="Fabio Nolasco - Photo"></fn-image>
         </nuxt-link>
 
         <span class="fn-icons">
-          <a href="https://github.com/fabionolasco" target="_blank"><i class="fa fa-github" aria-hidden="true" :class="{'hide': isSearchOpen}"></i></a>
-          <i class="fa fa-rss-square" aria-hidden="true" :class="{'hide': isSearchOpen}"></i>
-          <a href="https://www.linkedin.com/in/gomidefabio/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true" :class="{'hide': isSearchOpen}"></i></a>
-          <input id="fn-search" type="text" v-on:blur="hideSearch" :class="{'fn-open': isSearchOpen}" class="fn-animation">
-          <i class="fa fa-search" v-on:mouseover="overSearch = true" v-on:mouseleave="overSearch = false" aria-hidden="true" v-on:click="openSearch"></i>
+          <a href="https://github.com/fabionolasco" target="_blank"><i class="fa fa-github" aria-hidden="true" :class="{'hide': SearchService.isSearchOpen}"></i></a>
+          <a href="http://feeds.feedburner.com/FabioNolasco-Front-endDevelopment" target="_blank"><i class="fa fa-rss-square" aria-hidden="true" :class="{'hide': SearchService.isSearchOpen}"></i></a>
+          <a href="https://www.linkedin.com/in/gomidefabio/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true" :class="{'hide': SearchService.isSearchOpen}"></i></a>
+          <fn-search />
         </span>
 
       </div>
@@ -23,28 +22,19 @@
 </template>
 
 <script>
+import DB from '../plugins/db'
+import Search from './Search'
+import SearchService from '../plugins/search'
+
 export default {
   name: 'fn-header',
   data () {
     return {
-      isSearchOpen: false,
-      overSearch: false
+      SearchService: SearchService
     }
   },
-  methods: {
-    openSearch () {
-      this.isSearchOpen = !this.isSearchOpen
-      setTimeout(() => {
-        if (this.isSearchOpen) {
-          document.getElementById('fn-search').focus()
-        }
-      }, 500)
-    },
-    hideSearch () {
-      if (!this.overSearch) {
-        this.isSearchOpen = false
-      }
-    }
+  components: {
+    'fn-search': Search
   }
 }
 </script>

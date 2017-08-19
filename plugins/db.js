@@ -4,10 +4,51 @@ const DB = {
   getRef,
   checkDbVersion,
   getLastPosts,
-  getPost
+  getPost,
+  getPostByKey,
+  search
 }
 
 export default DB
+
+// SEARCH ON KEYWORDS
+function search (word) {
+  // First return promise
+  const promise = new Promise((resolve) => {
+    // Get data from Firebase
+    Vue.FIREBASE.db.goOnline()
+    const ref = DB.getRef('keywords')
+    // Get Content
+    ref.orderByKey()
+      .startAt(word)
+      .once('value')
+      .then((snapshot) => {
+        const keys = Object.keys(snapshot.val())
+        resolve(snapshot.val()[keys[0]])
+        Vue.FIREBASE.db.goOffline()
+      })
+  })
+  return promise
+}
+
+// GET SPECIFIC POST
+function getPostByKey (from, id) {
+  // First return promise
+  const promise = new Promise((resolve) => {
+    // Get data from Firebase
+    Vue.FIREBASE.db.goOnline()
+    const ref = DB.getRef(from)
+    // Get Content
+    ref.child('posts')
+      .child(id)
+      .once('value')
+      .then((snapshot) => {
+        resolve(snapshot.val())
+        Vue.FIREBASE.db.goOffline()
+      })
+  })
+  return promise
+}
 
 // GET SPECIFIC POST
 function getPost (from, id) {

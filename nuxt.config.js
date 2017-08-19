@@ -19,10 +19,11 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Fabio Nolasco is a Senior Front End Developer and Architect who loves using web techologies to solve real world problems, by creating Web Apps that are scalable, maintainable, fast, secure, and portable to other platforms like Mobile, Desktop and IOT.' }
+      { hid: 'description', name: 'description', content: 'Fabio Nolasco is a Senior Front-end Developer and Architect who loves using web techologies to solve real world problems, by creating Web Apps that are scalable, maintainable, fast, secure, and portable to other platforms like Mobile, Desktop and IOT.' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'alternate', type: 'application/rss+xml', title: 'FabioNolasco - Articles and Tips on Front-end Development',  href: 'http://feeds.feedburner.com/FabioNolasco-Front-endDevelopment' }
     ]
   },
   /*
@@ -40,7 +41,7 @@ module.exports = {
     orientation: 'portrait-primary',
     theme_color: '#1ea8ae',
     lang: 'en-US',
-    description: 'Fabio Nolasco is a Senior Front End Developer and Architect who loves using web techologies to solve real world problems, by creating Web Apps that are scalable, maintainable, fast, secure, and portable to other platforms like Mobile, Desktop and IOT.',
+    description: 'Fabio Nolasco is a Senior Front-end Developer and Architect who loves using web techologies to solve real world problems, by creating Web Apps that are scalable, maintainable, fast, secure, and portable to other platforms like Mobile, Desktop and IOT.',
     icons: [
       {
         'src': '/logo-16.png',
@@ -107,7 +108,7 @@ module.exports = {
   /*
   ** Modules
   */
-  plugins: ['~plugins/firebase'],
+  plugins: ['~plugins/firebase', '~plugins/date.filter'],
   modules: [
     '@nuxtjs/pwa'
   ]

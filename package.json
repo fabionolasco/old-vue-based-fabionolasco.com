@@ -1,15 +1,18 @@
 {
   "name": "fabionolasco",
   "version": "1.0.0",
-  "description": "Fabio Nolasco is a Senior Front End Engineer who loves using web techologies to solve real world problems, by creating Web Apps that are scalable, maintainable, fast, secure, and portable to other platforms like Mobile, Desktop and IOT.",
+  "description": "Fabio Nolasco is a Senior Front-end Engineer who loves using web techologies to solve real world problems, by creating Web Apps that are scalable, maintainable, fast, secure, and portable to other platforms like Mobile, Desktop and IOT.",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
     "@nuxtjs/pwa": "latest",
+    "@nuxtjs/workbox": "^1.2.0",
+    "es6-promise": "^4.1.1",
     "firebase": "^4.2.0",
     "font-awesome": "^4.7.0",
     "foundation-sites": "^6.4.1",
     "nuxt": "latest",
+    "url-loader": "^0.5.9",
     "vue-progressive-images": "^2.0.2"
   },
   "scripts": {

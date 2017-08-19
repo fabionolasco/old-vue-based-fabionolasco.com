@@ -39,7 +39,7 @@
   
     <section class="grid-x">
       <div class="cell small-12 fn-content">
-        <div v-if="!post">
+        <div v-if="!post" class="fb-large-bottom">
           <fn-spinner></fn-spinner>
         </div>
         <div v-if="post">
@@ -65,7 +65,7 @@ export default {
       post: false
     }
   },
-  mounted() {
+  created() {
     // Get from DB if necessary
     DB.getPost('blog', this.$route.params.id)
       .then((results) => {

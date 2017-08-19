@@ -1,14 +1,24 @@
 <template>
   <div class="grid-x">
     <div class="cell small-12 fn-jumbotron">
-      <slot></slot>
+      <div v-if="SearchService.isLoading" class="fn-router-loading">
+        <fn-spinner color="#fff"></fn-spinner>
+      </div>
+      <slot v-if="!SearchService.isLoading"></slot>
     </div>
   </div>
 </template>
 
 <script>
+import SearchService from '../plugins/search'
+
 export default {
-  name: 'fn-jumbotron'
+  name: 'fn-jumbotron',
+  data () {
+    return {
+      SearchService: SearchService
+    }
+  }
 }
 </script>
 
@@ -36,6 +46,13 @@ export default {
 .fn-jumbotron .fn-desc {
   display: block;
   font-size: 1.2rem;
+}
+
+.fn-router-loading {
+  width: 100%;
+  text-align: center;
+  padding: 50px;
+  margin-bottom: 40px;
 }
 
 @media screen and (min-width: 650px) {

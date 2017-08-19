@@ -1,22 +1,32 @@
 <template>
-  <div class="fn-loading">
+  <div class="fn-loading" v-bind:style="{ color: color }">
     <div id="fn-loading-ball">
-      <div id="fn-loading-ball_1" class="fn-loading-ball"></div>
-      <div id="fn-loading-ball_2" class="fn-loading-ball"></div>
-      <div id="fn-loading-ball_3" class="fn-loading-ball"></div>
-      <div id="fn-loading-ball_4" class="fn-loading-ball"></div>
-      <div id="fn-loading-ball_5" class="fn-loading-ball"></div>
-      <div id="fn-loading-ball_6" class="fn-loading-ball"></div>
-      <div id="fn-loading-ball_7" class="fn-loading-ball"></div>
-      <div id="fn-loading-ball_8" class="fn-loading-ball"></div>
+      <div id="fn-loading-ball_1" class="fn-loading-ball" v-bind:style="{ backgroundColor: color }"></div>
+      <div id="fn-loading-ball_2" class="fn-loading-ball" v-bind:style="{ backgroundColor: color }"></div>
+      <div id="fn-loading-ball_3" class="fn-loading-ball" v-bind:style="{ backgroundColor: color }"></div>
+      <div id="fn-loading-ball_4" class="fn-loading-ball" v-bind:style="{ backgroundColor: color }"></div>
+      <div id="fn-loading-ball_5" class="fn-loading-ball" v-bind:style="{ backgroundColor: color }"></div>
+      <div id="fn-loading-ball_6" class="fn-loading-ball" v-bind:style="{ backgroundColor: color }"></div>
+      <div id="fn-loading-ball_7" class="fn-loading-ball" v-bind:style="{ backgroundColor: color }"></div>
+      <div id="fn-loading-ball_8" class="fn-loading-ball" v-bind:style="{ backgroundColor: color }"></div>
     </div>
     Loading...
   </div>
 </template>
 
+<script>
+export default {
+  props: {
+    color: {
+      type: String,
+      default: '#1b96a0'
+    }
+  }
+}
+</script>
+
 <style scoped>
 .fn-loading {
-  margin: 10px 0 100px 0;
   text-align: center;
 }
 

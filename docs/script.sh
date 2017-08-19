@@ -1,3 +1,7 @@
+cd / && mkdir installs && cd /installs
+yum update -y
+yum install -y gcc-c++ make
+curl -sL https://rpm.nodesource.com/setup_6.x | bash -
 yum install -y nodejs
 yum install -y nginx
 firewall-cmd --permanent --zone=public --add-service=http

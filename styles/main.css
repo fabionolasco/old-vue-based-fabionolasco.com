@@ -13,7 +13,7 @@ html {
 }
 
 .fn-animation {
-  transition: all .5s ease;
+  transition: all .5s ease !important;
 }
 
 .fn-post-img img {
@@ -167,4 +167,9 @@ html {
 
 .fn-post-summary-img img {
   padding: 10px;
+}
+
+.fb-large-bottom {
+  /* Hahahaha */
+  margin-bottom: 100px;
 }
