@@ -11,19 +11,24 @@
       <div v-if="loading" class="fb-large-bottom">
         <fn-spinner></fn-spinner>
       </div>
+      <p class="fn-note">
+        <strong>Important note:</strong>
+        Between my job, family and home care I have very little time for personal projects. Most
+        came about with the main purpose of practicing whatever I happened to 
+        be studying at the time.
+        Therefore, even though these projects are not a precise showcase of what I can do, 
+        I am listing them to share some ideas and keep myself motivated.
+      </p>
       <section class="grid-x fn-post-summary-section" v-for="post in posts" v-bind:key="post.slug">
         <div class="cell small-12 fn-jumbotron">
           <router-link :to="'/projects/' + post.slug">
-             <fn-image :src="'post-small@0x.png'" alt="Post Alt" class="fn-post-summary-img"></fn-image> 
+             <fn-image :src="post.imageName" v-bind:alt="post.title" class="fn-post-summary-img"></fn-image> 
           </router-link>
           <div class="fn-post-summary">
             <router-link :to="'/projects/' + post.slug"><h5>{{post.title}}</h5></router-link>
             <span class="fn-post-summary-date">{{post.date}}</span>
-            <p>
-              {{post.smallDescription}}
-              <br>
-              <router-link :to="'/projects/' + post.slug">Visit Website</router-link>
-            </p>
+            <p v-html="post.description"></p>
+            <router-link :to="'/projects/' + post.slug">More details...</router-link>
           </div>
         </div>
       </section>
@@ -36,6 +41,11 @@
 import DB from '../../plugins/db'
 
 export default {
+  head() {
+    return {
+      title: 'Fabio Nolasco - Projects'
+    }
+  },
   data () {
     return {
       posts: [],
@@ -59,9 +69,6 @@ export default {
         const keys = Object.keys(results)
         const postsResult = []
         keys.forEach((key) => {
-          const p = document.createElement('p')
-          p.innerHTML = results[key].description
-          results[key].smallDescription = p.textContent.substring(0, 380) + '...'
           postsResult.push(results[key])
         })
         this.loading = false
@@ -75,6 +82,10 @@ export default {
 </script>
 
 <style scoped>
+.fn-note {
+  margin: 0 0 60px 0;
+}
+
 .fn-post-summary-section:not(:last-child) {
   margin-bottom: 30px;
 }

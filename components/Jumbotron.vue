@@ -28,7 +28,7 @@ export default {
   text-align: center;
   background: url("../static/bg1.svg")  no-repeat top left;
   background-size: cover;
-  padding: 100px 50px;
+  padding: 150px 50px;
 }
 
 .fn-jumbotron h3 {
@@ -58,7 +58,7 @@ export default {
 @media screen and (min-width: 650px) {
   .fn-jumbotron {
     margin-top: 133px;
-    padding: 100px 25%;
+    padding: 150px 25%;
   }
   .fn-jumbotron h3 {
     line-height: 2.6rem;

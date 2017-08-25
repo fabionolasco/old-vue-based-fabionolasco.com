@@ -1,5 +1,6 @@
 <template>
   <span>
+    <label for="fn-search" class="show-for-sr">Search:</label>
     <input id="fn-search" 
         type="text" 
         v-model="searchTerm" 
@@ -27,7 +28,7 @@ export default {
   methods: {
     presentResults (r) {
       const that = this
-      let results = r.slice(0)
+      let results = r.join(',').split(',')
       // If there is only one result
       if (results.length === 1) {
         const params = results[0].split('-');

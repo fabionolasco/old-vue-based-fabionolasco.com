@@ -18,6 +18,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  head() {
+    return {
+      title: 'Fabio Nolasco - 404'
+    }
+  }
+}
+</script>
+
 <style scoped>
 .fn-content {
   padding: 30px 8%;

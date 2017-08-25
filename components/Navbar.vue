@@ -5,27 +5,29 @@
     
     <nav class="grid-x fn-main-nav fn-shadow">
       <div class="cell small-12">
-        <ul id="fn-menu" class="grid-x fn-menu fn-animation">
+        <ul id="fn-menu" 
+          v-bind:class="[MenuStatus.isOpened ? 'fn-menu-opened' : 'fn-menu-closed']"
+          class="grid-x fn-menu fn-animation">
           <li class="cell auto">
-            <nuxt-link to="/" router-link-exact-active>
+            <nuxt-link to="/blog" nuxt-link-active>
               <i class="fa fa-comments" aria-hidden="true"></i>
               <span>BLOG</span>
             </nuxt-link>
           </li>
           <li class="cell auto">
-            <nuxt-link to="/projects" router-link-exact-active>
+            <nuxt-link to="/projects" nuxt-link-active>
               <i class="fa fa-folder-open" aria-hidden="true"></i>
               <span>PROJECTS</span>
             </nuxt-link>
           </li>
           <li class="cell auto">
-            <nuxt-link to="/about" router-link-exact-active>
+            <nuxt-link to="/about" nuxt-link-active>
               <i class="fa fa-id-card-o" aria-hidden="true"></i>
               <span>ABOUT</span>
             </nuxt-link>
           </li>
           <li class="cell auto">
-            <nuxt-link to="/contact" router-link-exact-active>
+            <nuxt-link to="/contact" nuxt-link-active>
               <i class="fa fa-envelope-open" aria-hidden="true"></i>
               <span>CONTACT</span>
             </nuxt-link>
@@ -37,18 +39,30 @@
 </template>
 
 <script>
+import { MenuStatus } from '../plugins/menu.service'
+
 export default {
   name: 'app',
+  data() {
+    return {
+      MenuStatus: MenuStatus
+    }
+  },
   methods: {
     showMenu () {
-      const fnMenu = document.getElementById('fn-menu')
-      fnMenu.style.left = fnMenu.style.left === '0%' ? '-80%' : '0%'
+      MenuStatus.isOpened = !MenuStatus.isOpened
     }
   }
 }
 </script>
 
 <style scoped>
+.fn-menu-opened {
+  left: 0 !important;
+}
+.fn-menu-closed {
+  left: -80% !important;
+}
 .fn-main-nav {
   padding-left: 100px;
   background-color: #dedede;
@@ -85,11 +99,13 @@ export default {
   color: #fff;
 }
 
- .fn-main-nav a.router-link-active i {
+/* nuxt-link-exact-active nuxt-link-active */
+
+ .fn-main-nav a.nuxt-link-exact-active i {
   color: #1b96a0;
 } 
 
-.fn-main-nav ul li a.router-link-active,
+.fn-main-nav ul li a.nuxt-link-exact-active,
 .fn-main-nav ul li a:hover i,
 .fn-main-nav ul li a:hover {
   background-color: #fff;

@@ -6,12 +6,15 @@
   "private": true,
   "dependencies": {
     "@nuxtjs/pwa": "latest",
+    "@nuxtjs/sitemap": "0.0.3",
     "@nuxtjs/workbox": "^1.2.0",
+    "babel-core": "^6.26.0",
     "es6-promise": "^4.1.1",
-    "firebase": "^4.2.0",
+    "firebase": "^4.3.0",
     "font-awesome": "^4.7.0",
     "foundation-sites": "^6.4.1",
     "nuxt": "latest",
+    "promise-polyfill": "^6.0.2",
     "url-loader": "^0.5.9",
     "vue-progressive-images": "^2.0.2"
   },

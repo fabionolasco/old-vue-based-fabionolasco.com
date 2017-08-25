@@ -1,9 +1,13 @@
 <template>
   <div>
+    <a href="#mainContent" class="show-for-sr">Skip to main content</a>
+
     <fn-header></fn-header>
     <fn-navbar></fn-navbar>
 
-    <nuxt></nuxt>
+    <main id="mainContent" role="main" tabindex="-1">
+      <nuxt></nuxt>
+    </main>
     
     <fn-footer></fn-footer>
   </div>
@@ -11,6 +15,7 @@
 
 <script>
 import Vue from 'vue'
+import { MenuStatus } from '../plugins/menu.service.js'
 import Header from '@/components/Header'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -28,6 +33,12 @@ export default {
     'fn-header': Header,
     'fn-navbar': Navbar,
     'fn-footer': Footer
+  },
+  watch: {
+    '$route': function() {
+      console.log(MenuStatus, this)
+      MenuStatus.isOpened = false
+    }
   }
 }
 </script>

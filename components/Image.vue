@@ -3,6 +3,8 @@
     <img 
       v-bind:src="srcValue"
       v-bind:alt="alt"
+      v-bind:width="width"
+      v-bind:height="height"
       v-bind:style="styles" />
   </span>
 </template>
@@ -12,7 +14,7 @@ import Vue from 'vue'
 
 export default {
   name: 'fn-image',
-  props: ['src', 'alt', 'blur', 'animate', 'maxRatio'],
+  props: ['src', 'alt', 'width', 'height', 'blur', 'animate', 'maxRatio'],
   data () {
     return {
       srcValue: this.src,

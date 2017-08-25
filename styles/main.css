@@ -16,15 +16,16 @@ html {
   transition: all .5s ease !important;
 }
 
+.fn-post img,
 .fn-post-img img {
   width: 50%;
   float: left;
-  padding: 0 15px 0 0;
+  padding: 0 10px 0 0;
 }
 
 .fn-post-summary-img img {
   float: left;
-  padding: 30px 0 20px 0;
+  padding: 30px 0 10px 0;
   width: 100%;
 }
 
@@ -53,6 +54,7 @@ html {
   line-height: 40px;
   background-color: #4bb8be;
   color: #fff;
+  padding: 0 7%;
 }
 
 .fn-ratings {
@@ -125,6 +127,9 @@ html {
   .fn-center {
     padding: 0 15%;
   }
+  .fn-post-details {
+    padding: 0 12%;
+  }
   .fn-content {
     padding: 50px 12%;
   }
@@ -138,6 +143,9 @@ html {
 }
 
 @media screen and (min-width: 1200px) {
+  .fn-post-details {
+    padding: 0 20%;
+  }
   .fn-content {
     padding: 50px 20%;
   }
@@ -153,14 +161,16 @@ html {
 }
 
 .fn-post-summary-img img,
+.fn-post img,
 .fn-post-img img {
   display: inline-block;
   border: 1px solid #ccc;
-  padding: 20px;
+  padding: 10px;
   background-color: #fff;
   margin: 0 20px 0 0;
 }
 
+.fn-post img,
 .fn-post-img img {
   width: 400px;
 }

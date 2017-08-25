@@ -58,6 +58,11 @@ import UTILS from '../plugins/utils.js'
 
 export default {
   name: 'fn-contact',
+  head() {
+    return {
+      title: 'Fabio Nolasco - Contact'
+    }
+  },
   data() {
     return {
       original: 'xxxxxxx (click to show)',

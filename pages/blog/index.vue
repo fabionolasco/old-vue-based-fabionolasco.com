@@ -2,10 +2,7 @@
   <div>
 
     <fn-jumbotron>
-      <h3 class="fn-text-shadow">
-        <span class="fn-im">Hi, I'm Fabio!</span>
-        <span class="fn-desc">I'm passionate about all the connections between Front-end Development and System Architectures, Productive Workflows, Portable Code, Progressive Web Apps, IoT and Artificial Inteligence.</span>
-      </h3>
+      <h3 class="fn-text-shadow">Blog</h3>
     </fn-jumbotron>
 
     <div class="fn-content">
@@ -34,9 +31,14 @@
 </template>
 
 <script>
-import DB from '../plugins/db'
+import DB from '../../plugins/db'
 
 export default {
+  head() {
+    return {
+      title: 'Fabio Nolasco - Blog'
+    }
+  },
   data () {
     return {
       posts: [],
@@ -56,7 +58,7 @@ export default {
       }
     }
     // Get from DB if necessary
-    DB.getLastPosts('blog', 3)
+    DB.getLastPosts('blog', 9999)
       .then((results) => {
         const keys = Object.keys(results)
         const postsResult = []

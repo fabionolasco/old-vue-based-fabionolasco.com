@@ -51,4 +51,3 @@ function getLongDate (source) {
   }
   return mm + ' ' + dd + ', ' + yyyy
 }
-

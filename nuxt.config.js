@@ -15,7 +15,7 @@ module.exports = {
   ** Common headers are already provided by @nuxtjs/pwa preset
   */
   head: {
-    title: 'FabioNolasco',
+    title: 'Fabio Nolasco - Front-end Architect',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -23,7 +23,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'alternate', type: 'application/rss+xml', title: 'FabioNolasco - Articles and Tips on Front-end Development',  href: 'http://feeds.feedburner.com/FabioNolasco-Front-endDevelopment' }
+      { rel: 'alternate', type: 'application/rss+xml', title: 'FabioNolasco - Articles and Tips on Front-end Development', href: 'http://feeds.feedburner.com/FabioNolasco-Front-endDevelopment' }
     ]
   },
   /*
@@ -110,6 +110,7 @@ module.exports = {
   */
   plugins: ['~plugins/firebase', '~plugins/date.filter'],
   modules: [
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/sitemap'
   ]
 }

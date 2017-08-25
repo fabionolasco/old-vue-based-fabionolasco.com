@@ -6,13 +6,13 @@
         <nuxt-link to="/">
           <h1>Fabio Nolasco</h1>
           <h2>Front-end Architect</h2>
-          <fn-image class="fn-photo" :src="'fabionolasco@0x.jpg'" alt="Fabio Nolasco - Photo"></fn-image>
+          <fn-image class="fn-photo" :src="'fabionolasco@0x.jpg'" alt="Fabio Nolasco - Photo" width="133" height="133"></fn-image>
         </nuxt-link>
 
         <span class="fn-icons">
-          <a href="https://github.com/fabionolasco" target="_blank"><i class="fa fa-github" aria-hidden="true" :class="{'hide': SearchService.isSearchOpen}"></i></a>
-          <a href="http://feeds.feedburner.com/FabioNolasco-Front-endDevelopment" target="_blank"><i class="fa fa-rss-square" aria-hidden="true" :class="{'hide': SearchService.isSearchOpen}"></i></a>
-          <a href="https://www.linkedin.com/in/gomidefabio/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true" :class="{'hide': SearchService.isSearchOpen}"></i></a>
+          <a href="https://github.com/fabionolasco" target="_blank" title="Visit my Github page"><span class="show-for-sr">Github</span><i class="fa fa-github" aria-hidden="true" :class="{'hide': SearchService.isSearchOpen}"></i></a>
+          <a href="http://feeds.feedburner.com/FabioNolasco-Front-endDevelopment" title="RSS Feed" target="_blank"><span class="show-for-sr">RSS</span><i class="fa fa-rss-square" aria-hidden="true" :class="{'hide': SearchService.isSearchOpen}"></i></a>
+          <a href="https://www.linkedin.com/in/gomidefabio/" target="_blank" title="Check out my Linkedin page"><span class="show-for-sr">LinkedIn</span><i class="fa fa-linkedin-square" aria-hidden="true" :class="{'hide': SearchService.isSearchOpen}"></i></a>
           <fn-search />
         </span>
 
@@ -73,7 +73,7 @@ export default {
   position: absolute;
   top: 90px;
   width: 100%;
-  left: 138px;
+  padding-left: 150px;
 }
 
 .fn-header .fn-icons-big {
@@ -114,12 +114,15 @@ export default {
 
 .fn-photo img {
   width: 133px;
+  height: 133px;
+  background-color: #fff;
   border: 4px solid #fff;
   position: absolute;
   z-index: 9090;
   left: 15px;
   top: 0;
   border-radius: 50%;
+  color: rgba(0,0,0,0);
 }
 
 @media screen and (min-width: 650px) {
@@ -147,6 +150,7 @@ export default {
     width: initial;
     left: initial;
     right: 20px;
+    padding-left: 0;
   }
 }
 </style>
